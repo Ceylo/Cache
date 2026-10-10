@@ -4,6 +4,8 @@ import UIKit
 
 import Foundation
 
+// Only where `Image` exists: there is no platform image type on Linux or Android.
+#if canImport(UIKit) || os(OSX)
 public struct ImageWrapper: Codable {
   public let image: Image
 
@@ -34,3 +36,4 @@ public struct ImageWrapper: Codable {
     try container.encode(data, forKey: CodingKeys.image)
   }
 }
+#endif
